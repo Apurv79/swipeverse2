@@ -1,20 +1,23 @@
-// app/components/ProfileCard.tsx
+'use client';
 
-import React from "react";
+import React from 'react';
 import Image from 'next/image';
 
 export default function ProfileCard() {
   return (
-    <div>
-      <div className="flex flex-col items-start justify-center min-h-screen bg-[#0c081b] text-white px-4" style={{ marginLeft: '16rem' }}>
-      <div className="w-full max-w-2xl">
+    <div className="p-12">
+      {/* Profile Card */}
+      <div className="w-full max-w-4xl bg-[#0c081b] p-6">
         {/* Profile Header */}
-        <h1 className="text-6xl font-extrabold mb-4">Laila</h1>
-        <p className="italic text-gray-400 mb-8" style={{ fontSize: '10px !important', lineHeight: '1.2rem' }}>❝ I am not here for hookups ❞</p>
+        <div className="flex-col justify-center items-center border border-white p-6 mb-8  rounded-3xl bg-pink-500 ">
+          <h1 className="text-5xl font-extrabold mb-2 text-center ">Laila</h1>
+          <p className="italic text-sm text-gray-400 leading-snug mb-8 text-center mt-2 ">
+            ❝ I am not here for hookups ❞
+          </p>
 
-        {/* User Info */}
-        <div className="space-y-6 mb-16 text-gray-600 text-base"> {/* Adjusted bottom margin */}
-          <div className="grid grid-cols-6 gap-x-4 gap-y-4"> {/* Added gap-y-4 for consistent row spacing */}
+          {/* User Info */}
+
+          <div className=" mx-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-gray-300 mb-10  ">
             <span className="flex items-center gap-2">📅 23</span>
             <span className="flex items-center gap-2">👩 Woman</span>
             <span className="flex items-center gap-2">🔗 Straight</span>
@@ -24,63 +27,59 @@ export default function ProfileCard() {
             <span className="flex items-center gap-2">🐾 Yes</span>
             <span className="flex items-center gap-2">🍹 No</span>
             <span className="flex items-center gap-2">🍹 No</span>
-            <span className="flex items-center gap-2">🐾 cat</span>
+            <span className="flex items-center gap-2">🐾 Cat</span>
             <span className="flex items-center gap-2">🍹 Don't Want</span>
           </div>
         </div>
 
-        {/* Added margin to create gap between user info and the block */}
-        <div className="mt-12 bg-[#47445f] p-6 rounded-lg">
-        <div className="flex justify-center gap-x-8"> {/* Horizontal alignment with spacing */}
-  <div className="flex flex-col items-center">
-    <p className="text-center mb-4">❝ Yoga: The journey of the self, through the self, to the self ❞</p>
-    <Image
-      src="/images/yoga1.png"
-      alt="Yoga 1"
-      width={350}
-      height={350}
-      className="rounded-xl object-cover w-[350px] h-[350px]"
-    />
-  </div>
+        {/* Yoga Quotes & Images */}
+        <div className="bg-[#0c081b]  rounded-xl border border-white shadow-lg mt-8">
+          <div className="flex flex-wrap justify-center items-start gap-16">
+            {[
+              {
+                quote:
+                  '❝ Yoga: The journey of the self, through the self, to the self ❞',
+                img: 'yoga1.png',
+              },
+              {
+                quote: '❝ Breathe in peace, breathe out stress ❞',
+                img: 'yoga2.png',
+              },
+              {
+                quote: '❝ Yoga is the art of waking up ❞',
+                img: 'yoga3.png',
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center w-[280px]">
+                {/* Fixed height quote box for alignment */}
+                <div className="h-[60px] flex items-center justify-center text-center mb-3">
+                  <p className="text-sm text-white leading-snug">
+                    {item.quote}
+                  </p>
+                </div>
 
-  <div className="flex flex-col items-center">
-    <p className="text-center mb-4">❝ Breathe in peace, breathe out stress ❞</p>
-    <Image
-      src="/images/yoga2.png"
-      alt="Yoga 2"
-      width={350}
-      height={350}
-      className="rounded-xl object-cover w-[350px] h-[350px]"
-    />
-  </div>
-
-  <div className="flex flex-col items-center">
-    <p className="text-center mb-4">❝ Yoga is the art of waking up ❞</p>
-    <Image
-      src="/images/yoga3.png"
-      alt="Yoga 3"
-      width={350}
-      height={350}
-      className="rounded-xl object-cover w-[350px] h-[350px]"
-    />
-  </div>
-</div>
-
-        </div> {/* Closing the main content div */}
-
-        {/* Cross and Tick Buttons */}
-        
+                <Image
+                  src={`/images/${item.img}`}
+                  alt={`Yoga ${idx + 1}`}
+                  width={260}
+                  height={260}
+                  className="rounded-xl object-cover w-[260px] h-[260px]"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      
-    </div>
-    <div className="flex items-center justify-between w-full mt-6"> {/* Ensured buttons are at the two ends */}
-    {/* Tick */}
-    <button className="text-5xl text-green-400 hover:scale-110 transition-transform mb-1000">❌</button>
 
-    {/* Cross */}
-    <button className="text-5xl text-red-500  hover:scale-110 transition-transform">✅</button>
-  </div>
+      {/* Action Buttons */}
+      <div className="flex justify-between items-center w-full max-w-4xl mt-10 px-6">
+        <button className="text-5xl text-red-500 hover:scale-110 transition-transform duration-200">
+          ❌
+        </button>
+        <button className="text-5xl text-green-400 hover:scale-110 transition-transform duration-200">
+          ✅
+        </button>
+      </div>
     </div>
-    
   );
 }
