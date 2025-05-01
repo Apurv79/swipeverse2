@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-pink: #FF6B8B;
+  --app-mint: #7EDAD4;
+  --app-light-green: #C1F4D0;
+  --app-bg: #0F0B1E;
+  --app-cream: #F8F4E3;
+}
+
+body {
+  background-color: var(--app-bg);
+  color: white;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-xxs {
+    font-size: 10px;
+  }
+}
